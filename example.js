@@ -73,42 +73,51 @@ const contractCall = async  () => {
 
     // get nonce
     const transactionCount = await w3.eth.getTransactionCount(account);
-    console.log(transactionCount);
+    //console.log(transactionCount);
 
-    //get balance
-    const balance = await w3.eth.getBalance(account);
-    console.log(balance);
+    // //get balance
+    // const balance = await w3.eth.getBalance(account);
+    // //console.log(balance);
 
     //get gasPrice
-    const gasPrice = await w3.eth.getGasPrice();
+    const gasPriceWei = await w3.eth.getGasPrice();
+    //const gasPriceFTM = w3.utils.fromWei(gasPriceWei,"ether")
+    //console.log(gasPriceWei+" wei");
+    //console.log(gasPriceFTM +" FTMs");
 
-//      //BrewBOO function create
-//     const data = brewBoo.methods.convertMultiple(
-//         token0,
-//         token1
-//     ).encodeABI()
-//     console.log(data);
+      //BrewBOO function create
+     const data = brewBoo.methods.convertMultiple(
+        token0,
+        token1
+    ).encodeABI()
+    console.log(data);
 
     
-//     //brah 
-//    const txOptions={
-//         "from": account,
-//         "to": contractAddress,
-//         "data": data,
-//         "value": 0,
-//         "gasPrice": gasPrice,
-//         "gas": 9000000,
-//         "nonce": transactionCount
-//      }
-//     console.log(txOptions);
+   //build transaction 
+   const txOptions={
+        "from": account,
+        "to": contractAddress,
+        "data": data,
+        "value": 0,
+        "gasPrice": gasPriceWei,
+        "gas": 9000000,
+        "nonce": transactionCount
+     }
+    //console.log(txOptions);
 
-//     //sign transaction
-//     signed_tx= await w3.eth.accounts.signTransaction(txOptions,privateKey)
-//     console.log(signed_tx);
+    //sign transaction
+    signed_tx= await w3.eth.accounts.signTransaction(txOptions,privateKey)
+    //console.log(signed_tx);
 
-    // //send transaction
-    // w3.eth.sendSignedTransaction(signed_tx.rawTransaction)
-    // console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
+    //send transaction
+    w3.eth.sendSignedTransaction(signed_tx.rawTransaction)
+    .then((result) => {
+        console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
+        
+    }).catch((err) => {
+        console.log(`ERROR NOT SENDED`
+    });
+    
 
     
 
