@@ -14,7 +14,7 @@ const BREWBOO_ADDRESS = "0x68f598280a843A5Ce07C1b9fB0D3aF00Cd085c31" //BrewBoo a
  var token1 = []
  var i=0,j=0;
 
- //FANTOM PAIRS
+// FANTOM PAIRS
 const FTM_PAIRS = [
     // ADD OR REMOVE TOKENS HERE.
     tokens.USDC,
@@ -40,7 +40,7 @@ while (i<=FTM_PAIRS.length-1) {
     i++;
 }
 
-// // //DAI PAIRS
+ //DAI PAIRS
  const  DAI_PAIRS = [
     // ADD OR REMOVE TOKENS HERE.
      tokens.USDC,
@@ -86,11 +86,11 @@ const contractCall = async  () => {
     //console.log(gasPriceFTM +" FTMs");
 
       //BrewBOO function create
-     const data = brewBoo.methods.convertMultiple(
+     const data = await brewBoo.methods.convertMultiple(
         token0,
-        token1
+        token1,
     ).encodeABI()
-    console.log(data);
+    //console.log(data);
 
     
    //build transaction 
@@ -111,22 +111,12 @@ const contractCall = async  () => {
 
     //send transaction
     w3.eth.sendSignedTransaction(signed_tx.rawTransaction)
-    .then((result) => {
-        console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
-        
-    }).catch((err) => {
-        console.log(`ERROR NOT SENDED`)
-    });
-    
+    console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
 
+    return  0;
     
+        
+
 
 }
 contractCall();
-
-
-
-
-
-
-
