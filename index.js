@@ -115,7 +115,7 @@ const contractCall = async  () => {
         console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
         
     }).catch((err) => {
-        console.log(`ERROR NOT SENDED`
+        console.log(`ERROR NOT SENDED`)
     });
     
 
