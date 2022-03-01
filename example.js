@@ -56,9 +56,8 @@ while (i<=FTM_PAIRS.length-1) {
  token0.push(tokens.USDC)
  token1.push(tokens.OXD)
 
-(token0.length==token1.length) ? console.log("token0 and token1 are the same length") : console.log("token0 and token1 are not the same length")
-console.log(token0,token1)
-console.log(token0.length,token1.length)
+//(token0.length==token1.length) ? console.log("token0 and token1 are the same length") : console.log("token0 and token1 are not the same length")
+
 //RPC configuration
 const w3 = new Web3("https://rpc.ankr.com/fantom")
 
