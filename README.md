@@ -34,5 +34,5 @@ Note: Zapper does not always include newly minted tokens. The analytics page can
 5. Call the script 
 Sample call:
 ```
-node.js .
+node .
 ```
