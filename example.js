@@ -34,29 +34,31 @@ const FTM_PAIRS = [
     tokens.BOO,
   ]
 
-while (i<=FTM_PAIRS.length) {
+while (i<=FTM_PAIRS.length-1) {
     token0.push(tokens.FTM)
     token1.push(FTM_PAIRS[i])
     i++;
 }
 
-//DAI PAIRS
-const  DAI_PAIRS = [
+// // //DAI PAIRS
+ const  DAI_PAIRS = [
     // ADD OR REMOVE TOKENS HERE.
-    tokens.USDC,
-  ]
+     tokens.USDC,
+   ]
 
-  while (j<=DAI_PAIRS.length) {
-    token0.push(tokens.FTM)
-    token1.push(DAI_PAIRS[i])
-    j++;
-}
+   while (j<DAI_PAIRS.length-1) {
+     token0.push(tokens.DAI)
+     token1.push(DAI_PAIRS[i])
+     j++;
+ }
 
 //custom token example
-token0.push(tokens.USDC)
-token1.push(tokens.OXD)
+ token0.push(tokens.USDC)
+ token1.push(tokens.OXD)
 
-
+(token0.length==token1.length) ? console.log("token0 and token1 are the same length") : console.log("token0 and token1 are not the same length")
+console.log(token0,token1)
+console.log(token0.length,token1.length)
 //RPC configuration
 const w3 = new Web3("https://rpc.ankr.com/fantom")
 
@@ -81,33 +83,33 @@ const contractCall = async  () => {
     //get gasPrice
     const gasPrice = await w3.eth.getGasPrice();
 
-     //BrewBOO function create
-    const data = brewBoo.methods.convertMultiple(
-        token0,
-        token1
-    ).encodeABI()
-    console.log(data);
+//      //BrewBOO function create
+//     const data = brewBoo.methods.convertMultiple(
+//         token0,
+//         token1
+//     ).encodeABI()
+//     console.log(data);
 
     
-    //brah 
-   const txOptions={
-        "from": account,
-        "to": contractAddress,
-        "data": data,
-        "value": 0,
-        "gasPrice": gasPrice,
-        "gas": 9000000,
-        "nonce": transactionCount
-     }
-    console.log(txOptions);
+//     //brah 
+//    const txOptions={
+//         "from": account,
+//         "to": contractAddress,
+//         "data": data,
+//         "value": 0,
+//         "gasPrice": gasPrice,
+//         "gas": 9000000,
+//         "nonce": transactionCount
+//      }
+//     console.log(txOptions);
 
-    //sign transaction
-    signed_tx= await w3.eth.accounts.signTransaction(txOptions,privateKey)
-    console.log(signed_tx);
+//     //sign transaction
+//     signed_tx= await w3.eth.accounts.signTransaction(txOptions,privateKey)
+//     console.log(signed_tx);
 
-    //send transaction
-    w3.eth.sendSignedTransaction(signed_tx.rawTransaction)
-    console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
+    // //send transaction
+    // w3.eth.sendSignedTransaction(signed_tx.rawTransaction)
+    // console.log(`https://ftmscan.com/tx/${signed_tx.transactionHash}`)
 
     
 
