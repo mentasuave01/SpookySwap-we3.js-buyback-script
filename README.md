@@ -6,7 +6,7 @@ The BrewBoo v2 contract (https://ftmscan.com/address/0x68f598280a843A5Ce07C1b9fB
 The javascript script provided in this repo is an example of calling BrewBoo v2.
 
 ## Setup
-This setup assumes Node.js and pnmp are available.
+This setup assumes Node.js and pnpm are available.
 
 1. Clone the repo
 ```
